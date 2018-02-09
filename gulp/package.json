@@ -1,0 +1,53 @@
+{
+  "name": "meh-gulp",
+  "version": "1.0.0",
+  "description": "Build process for WP projects.",
+  "repository": "https://github.com/m-e-h",
+  "private": true,
+  "license": "GNU General Public License v2 or later",
+  "devDependencies": {
+    "autoprefixer": "^7.2.5",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.23.6",
+    "browserslist": "^2.11.3",
+    "fs-extra": "^5.0.0",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-header": "^2.0.1",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-postcss": "^7.0.1",
+    "gulp-rev": "^8.1.1",
+    "gulp-size": "^3.0.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-stylelint": "^6.0.0",
+    "gulp-uglify": "3.0.0",
+    "postcss-color-function": "^4.0.1",
+    "postcss-custom-media": "^6.0.0",
+    "postcss-discard-comments": "^2.0.4",
+    "postcss-discard-empty": "^2.1.0",
+    "postcss-import": "^11.0.0",
+    "postcss-increase-specificity": "^0.6.0",
+    "postcss-mixins": "^6.2.0",
+    "postcss-nested": "^3.0.0",
+    "postcss-plugin-context": "^2.0.0",
+    "postcss-simple-vars": "^4.1.0",
+    "postcss-strip-units": "^2.0.1",
+    "stylelint": "^8.4.0",
+    "stylelint-config-standard": "^18.0.0"
+  },
+  "stylelint": {
+    "defaultSeverity": "warning",
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "indentation": "tab"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "ie >= 11"
+  ]
+}
