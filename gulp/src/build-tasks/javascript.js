@@ -6,8 +6,7 @@ const concat = require("gulp-concat");
 const SOURCESJS = [
 	`${global.__buildConfig.src}/scripts/helpers/element-closest.js`,
 	`${global.__buildConfig.src}/scripts/helpers/onClickOrTap.js`,
-	`${global.__buildConfig.src}/scripts/navigation.js`,
-	`${global.__buildConfig.src}/scripts/main.js`
+	`${global.__buildConfig.src}/scripts/navigation.js`
 ];
 
 const javascript = () => {
