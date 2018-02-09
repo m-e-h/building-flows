@@ -1,0 +1,12 @@
+
+#menu-primary .menu-main-container {
+	background-color: transparent;
+}
+
+.menu-toggle {
+	display: none;
+}
+
+.menu-primary ul {
+	display: flex;
+}

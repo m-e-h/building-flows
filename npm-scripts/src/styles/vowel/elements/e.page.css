@@ -1,0 +1,159 @@
+/* #PAGE
+\*------------------------------------ */
+
+/* specify the root styles of the document */
+html {
+	font-size: $min-font-size;
+	background-color: #fff;
+}
+
+@media (--sm) {
+	html {
+		font-size: $fluid-font;
+	}
+}
+
+@media (--xl) {
+	html {
+		font-size: $max-font-size;
+	}
+}
+
+/*
+* Universal inheritance
+*/
+*,
+::before,
+::after {
+	border-style: solid;
+	border-width: 0;
+}
+
+* {
+	flex-basis: auto;
+	flex-grow: 0;
+	flex-shrink: 1;
+}
+
+body {
+	font-family: $root-font-family;
+	font-size: 1rem;
+	font-weight: 400;
+	color: $root-color;
+	background-color: #fff;
+	line-height: 1.5;
+}
+
+main {
+	width: 100%;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary,
+legend {
+	position: relative;
+}
+
+main a {
+	background-image: linear-gradient(to bottom, $color-shade-3 50%, rgba(0, 0, 0, 0) 50%);
+	background-repeat: repeat-x;
+	background-size: 0.125rem 0.3rem;
+	background-position: 0 110%;
+}
+
+article {
+	background-color: #fff;
+	color: $root-color;
+	margin-bottom: $base-space;
+	width: 100%;
+	min-width: 270px;
+	max-width: $paragraph-width;
+
+	@media (--md) {
+		width: calc(50% - $gutter);
+	}
+}
+
+article:first-of-type:last-of-type {
+	width: 100%;
+	max-width: 100%;
+}
+
+p {
+	line-height: 1.6;
+}
+
+p:empty {
+	display: none;
+}
+
+p:last-child,
+:root article > :last-child {
+	margin-bottom: 0;
+}
+
+p,
+pre,
+blockquote {
+	margin: 0 0 1rem;
+}
+
+.site {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	max-width: 100%;
+	width: 100%;
+	overflow-x: hidden;
+	word-wrap: break-word;
+}
+
+hr {
+	margin-top: $base-space;
+	margin-bottom: $base-space;
+	border: 0;
+	border-bottom: 1px solid $grey-nuetral;
+}
+
+article ul {
+	list-style-type: disc;
+}
+
+article ol {
+	list-style-type: upper-roman;
+
+	li {
+		padding-left: $space-05;
+	}
+}
+
+article * + h1,
+article * + h2,
+article * + h3,
+article * + h4 {
+	margin-top: 0.5em;
+}
+
+/**
+* 1. Globally hiding elements with [aria-hidden="true"] can have rendering
+*    issues with third party integrations. Only known to date is with Google
+*    Maps, in which it prevents the map tiles to render. Therefore it needs to
+*    be resetted inside a Google Maps container.
+*    See: https://github.com/edenspiekermann/a11y-toggle/issues/30
+* 2. Fallback value in case the `initial` value is not supported.
+*    See: http://caniuse.com/#feat=css-initial-value
+*/
+.gm-style [aria-hidden='true'] {
+	display: block; /* 2 */
+	display: initial;
+}
