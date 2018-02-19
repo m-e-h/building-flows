@@ -6,38 +6,46 @@
   "private": true,
   "license": "GNU General Public License v2 or later",
   "scripts": {
+    "build": "npm run css && npm run js && npm run svg-min",
     "css": "npm run css-compile && npm run css-fix && npm run css-minify",
     "css-compile": "postcss src/styles/index.css -o style.css",
     "css-fix": "stylelint style.css --fix",
     "css-minify": "postcss style.css -u cssnano -o style-$npm_package_version.css --no-map",
-    "css-lint": "stylelint style.css"
+    "css-lint": "stylelint style.css",
+    "js": "npm run js-compile && npm run js-minify",
+    "js-compile": "npx babel src/scripts/*.js -o js/main.js",
+    "js-minify": "uglifyjs js/main.js -o js/main-$npm_package_version.js",
+    "svg-min": "svgo -f src/images/icons -o images/icons",
+    "clean-icons": "del-cli images/icons/*"
   },
   "devDependencies": {
-    "autoprefixer": "^7.2.5",
-    "@babel/cli": "7.0.0-beta.39",
-    "@babel/core": "7.0.0-beta.39",
-    "@babel/preset-env": "7.0.0-beta.39",
+    "autoprefixer": "^8.0.0",
+    "@babel/cli": "7.0.0-beta.40",
+    "@babel/core": "7.0.0-beta.40",
+    "@babel/preset-env": "7.0.0-beta.40",
     "browser-sync": "^2.23.6",
-    "browserslist": "^2.11.3",
-    "fs-extra": "^5.0.0",
+    "browserslist": "^3.1.1",
     "cssnano": "^3.10.0",
-    "imagemin": "^5.3.1",
-    "uglify-js": "^3.3.9",
-    "postcss-cli": "^4.1.1",
+    "del-cli": "^1.1.0",
+    "fs-extra": "^5.0.0",
+    "postcss-cli": "^5.0.0",
     "postcss-color-function": "^4.0.1",
     "postcss-custom-media": "^6.0.0",
     "postcss-discard-comments": "^2.0.4",
     "postcss-discard-empty": "^2.1.0",
-    "postcss-import": "^11.0.0",
+    "postcss-import": "^11.1.0",
     "postcss-increase-specificity": "^0.6.0",
     "postcss-mixins": "^6.2.0",
     "postcss-nested": "^3.0.0",
     "postcss-plugin-context": "^2.0.0",
     "postcss-simple-vars": "^4.1.0",
     "postcss-strip-units": "^2.0.1",
-    "stylelint": "^8.4.0",
-    "stylelint-config-standard": "^18.0.0"
+    "stylelint": "^9.0.0",
+    "stylelint-config-standard": "^18.1.0",
+    "svgo": "1.0.4",
+    "uglify-js": "^3.3.11"
   },
+
   "stylelint": {
     "defaultSeverity": "warning",
     "extends": "stylelint-config-standard",
@@ -45,12 +53,21 @@
       "indentation": "tab"
     }
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "ie >= 11"
-  ],
+  "browserslist": ["> 1%", "last 2 versions", "ie >= 11"],
   "babel": {
     "presets": ["@babel/env"]
+  },
+  "svgoCon": {
+    "plugins": [
+      { "cleanupIDs": true },
+      { "removeTitle": true },
+      { "removeViewBox": false },
+      { "removeAttrs": { "attrs": "(fill|stroke)" } },
+      { "addClassesToSVGElement": { "className": "v-icon" } },
+      { "removeUselessStrokeAndFill": true },
+      { "cleanupNumericValues": { "floatPrecision": 2 } },
+      { "removeNonInheritableGroupAttrs": true },
+      { "removeDimensions": true }
+    ]
   }
 }
